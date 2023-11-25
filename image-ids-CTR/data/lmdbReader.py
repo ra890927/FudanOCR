@@ -37,18 +37,13 @@ class lmdbDataset(Dataset):
         if index > len(self):
             index = len(self) - 1
         assert index <= len(self), 'index range error index: %d' % index
-        index += 1
+
         with self.env.begin(write=False) as txn:
             img_key = 'image-%09d' % index
-            imgbuf = txn.get(img_key.encode())
+            img_path = txn.get(img_key.encode())
 
-            buf = six.BytesIO()
-            buf.write(imgbuf)
-            buf.seek(0)
             try:
-                img = Image.open(buf).convert('RGB')
-
-                pass
+                img = Image.open(img_path)
             except IOError:
                 print('Corrupted image for %d' % index)
                 return self[index + 1]
