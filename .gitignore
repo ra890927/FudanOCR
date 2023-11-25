@@ -11,3 +11,5 @@ checkpoint
 scripts
 .idea
 .DS_Store
+dataset/
+history/
