@@ -13,7 +13,7 @@ from torch.utils.tensorboard import SummaryWriter
 writer = SummaryWriter('runs/{}'.format(datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')))
 
 saver()
-must_in_screen()
+# must_in_screen()
 
 alphabet = get_alphabet()
 radical_alphabet = get_radical_alphabet()
